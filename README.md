@@ -28,11 +28,17 @@ configure 关键参数踩坑记录见 `build-bionic-ffmpeg.sh` 头部注释。
 ## 直接下载
 
 ```bash
-# GitHub
-curl -LO https://github.com/sunc-Q/ffmpeg-bionic/raw/main/libffmpeg-arm64-bionic.so
-# Gitee（国内更快）
-curl -LO https://gitee.com/giteesunc/ffmpeg-bionic/raw/main/libffmpeg-arm64-bionic.so
+# 方式一：git clone（双站均可，最可靠）
+git clone https://gitee.com/giteesunc/ffmpeg-bionic.git   # 国内推荐
+git clone https://github.com/sunc-Q/ffmpeg-bionic.git
+
+# 方式二：raw 直链（仅 GitHub；Gitee 平台对大文件匿名 raw 返回 403，需登录后下载）
+curl -LO https://raw.githubusercontent.com/sunc-Q/ffmpeg-bionic/main/libffmpeg-arm64-bionic.so
 ```
+
+> 注意：Gitee 平台策略限制超过 1MB 的文件匿名 raw 访问（403 require login），
+> .so 文件请通过 `git clone` 或登录 Gitee 后从仓库页面下载。下载后可用 `SHA256SUMS.txt` 校验：
+> `sha256sum -c SHA256SUMS.txt`
 
 ## 用法（Android App 内）
 
